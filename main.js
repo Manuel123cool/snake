@@ -15,6 +15,15 @@ let rect = Array();
 rect[0] = new Rect(200, 200);
 
 function direction (e) {
+    if (dir == "ArrowRight" && e.key == "ArrowLeft") {
+        return;
+    } else if (dir == "ArrowLeft" && e.key == "ArrowRight") {
+        return;
+    } else if (dir == "ArrowUp" && e.key == "ArrowDown") {
+        return;
+    } else if (dir == "ArrowDown" && e.key == "ArrowUp") {
+        return;
+    }
     dir = e.key;
 }
 
@@ -75,6 +84,7 @@ function makeDefault() {
         rect.shift();
     }
     rect[0] = new Rect(200, 200);
+    dir = "no_dir";
     limit = 4;
 }
 
@@ -86,6 +96,12 @@ function checkWall() {
             makeDefault();
         }
     }  
+    for (let i = 0; i < rect.length - 1; ++i) {
+         if (rect[rect.length - 1].x == rect[i].x && 
+            rect[rect.length - 1].y == rect[i].y) {
+            makeDefault();
+        } 
+    } 
 }
 
 setInterval(update, 400);
