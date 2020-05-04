@@ -75,6 +75,7 @@ function makeDefault() {
         rect.shift();
     }
     rect[0] = new Rect(200, 200);
+    limit = 4;
 }
 
 function checkWall() {
